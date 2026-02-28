@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Меллстрой мемы</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page-wrap">
+    <h1>🎥 Меллстрой мемы</h1>
+
+    <div class="search-wrap">
+      <div class="search">
+        <span class="search-icon">🔍</span>
+        <input
+          type="text"
+          id="search"
+          placeholder="Ищи по названию или тегам..."
+        >
+      </div>
+    </div>
+
+    <div id="memes" class="memes"></div>
+
+    <section class="submit">
+      <h2 class="submit-title">Предложить свой мем</h2>
+      <p class="submit-text">Мы добавляем мемы через админку. Отправь заявку — мы посмотрим и, если всё ок, добавим на сайт.</p>
+      <form id="submit-form" class="submit-form">
+        <div class="submit-row">
+          <label for="submit-title">Название</label>
+          <input id="submit-title" name="title" type="text" required placeholder="Название мема">
+        </div>
+        <div class="submit-row">
+          <label for="submit-tags">Теги</label>
+          <input id="submit-tags" name="tags" type="text" placeholder="через запятую">
+        </div>
+        <div class="submit-row">
+          <label for="submit-video">Видео</label>
+          <input id="submit-video" name="video" type="file" accept="video/*" required>
+        </div>
+        <button type="submit" class="submit-button">Отправить на модерацию</button>
+        <p id="submit-status" class="submit-status"></p>
+      </form>
+    </section>
+  </div>
+
+  <div id="player-modal" class="modal hidden">
+    <div class="modal-inner">
+      <button class="modal-close" aria-label="Закрыть видео">&times;</button>
+      <video id="player-video"></video>
+      <div class="player-controls">
+        <button id="play-pause-btn" class="player-button" type="button">▶</button>
+        <input
+          id="volume-slider"
+          class="player-volume"
+          type="range"
+          min="0"
+          max="100"
+          step="1"
+          value="100"
+        >
+        <input
+          id="progress-bar"
+          class="player-progress"
+          type="range"
+          min="0"
+          max="100"
+          value="0"
+        >
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
