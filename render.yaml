@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: mellstroy-memes
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: ADMIN_KEY
+        generateValue: true
