@@ -147,7 +147,11 @@ app.post("/api/admin/approve/:id", (req, res) => {
 
   fs.renameSync(sourcePath, targetPath);
 
-  const manifest = readManifest();
+  let manifest = readManifest();
+  if (manifest.length === 0 && fs.existsSync(videosDir)) {
+    const videoExt = /\.(mp4|mov|webm|m4v)$/i;
+    manifest = fs.readdirSync(videosDir).filter(f => videoExt.test(f));
+  }
   manifest.push(targetName);
   writeManifest(manifest);
 
@@ -184,4 +188,3 @@ app.post("/api/admin/reject/:id", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
 });
-
